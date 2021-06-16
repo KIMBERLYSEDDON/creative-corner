@@ -5,3 +5,6 @@
     --lgblue: #C1CBD9
     --drkblue: #61748C
 }
+.content img {
+    width: 500px;
+  }

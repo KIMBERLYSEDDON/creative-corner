@@ -1,6 +1,6 @@
 var searchButton = document.querySelector('#art-search')
 var artImage = document.querySelector('#art-image')
-var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
+var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q='
 var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
 var searchValue;
 var objectNum;
