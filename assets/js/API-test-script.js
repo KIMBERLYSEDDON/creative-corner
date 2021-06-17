@@ -1,9 +1,11 @@
 var search = document.querySelector(".search")
+var next = search.querySelector("#next")
 var searchEl = document.querySelector('#searchEl')
 var artImage = document.querySelector('#art-image')
-var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&perPage=100&q='
+
+var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
-var searchValue;
+
 
 var index = 0;
 
@@ -11,8 +13,8 @@ var objectA;
 var objectB;
 var objectC;
 var data;
-var dataValue = [];
-var next = search.querySelector("#next")
+// var dataValue = [];
+
 
 // Takes search input, takes the keyword and submits it to API as parameter. 
 // API returns all IDs connected to that parameter (can't figure out how to limit that)
@@ -29,6 +31,7 @@ function handleSearchSubmit(event) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             // console.log(data.objectIDs.length);
             console.log(data.objectIDs);
 
@@ -62,7 +65,7 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectA);
-            $('#art-image').append("<img src=" + data.primaryImage + ">");
+            $('#art-image').append("<img src=" + data.primaryImageSmall + ">");
         });
 
     fetch(objectSearch_QueryURL + objectB)
@@ -72,7 +75,7 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectB);
-            $('#art-image').append("<img src=" + data.primaryImage + ">");
+            $('#art-image').append("<img src=" + data.primaryImageSmall + ">");
         });
 
     fetch(objectSearch_QueryURL + objectC)
