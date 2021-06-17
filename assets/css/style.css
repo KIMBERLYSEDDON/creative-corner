@@ -1,3 +1,48 @@
+html, body {
+
+    background-color: #61748C !important;
+
+
+}
+.cloud {
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    width: 600px;
+    height: 100px;
+
+
+}
+
+.man {
+    position: absolute;
+    top: 350px;
+    left: 80px;
+    width: 380px;
+    height: 200px;
+    
+  }
+
+.search {
+position: absolute;
+top: 400px;
+left: 800px;
+width: 300px;
+height: 80px;
+border: #8C826F;
+border-width: 20px;
+
+}
+
+.header {
+
+position: fixed;
+bottom: 20px;
+right: 75px;
+color: white;
+}
+
+
 :root {
     --beige: #D9D0C1
     --drkbeige: #8C826F
