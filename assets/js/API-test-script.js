@@ -1,3 +1,4 @@
+var search = document.querySelector(".search")
 var searchEl = document.querySelector('#searchEl')
 var artImage = document.querySelector('#art-image')
 var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&perPage=100&q='
@@ -10,7 +11,13 @@ var objectA;
 var objectB;
 var objectC;
 var data;
-var objIDs = [];
+var dataValue = [];
+var next = search.querySelector("#next")
+
+// Takes search input, takes the keyword and submits it to API as parameter. 
+// API returns all IDs connected to that parameter (can't figure out how to limit that)
+// Those values are turned into an Array, a 'for' loop selects 3 of the IDs, assigns them to a 
+// variable and passes it off to displayObjectData.
 
 function handleSearchSubmit(event) {
     event.preventDefault();
@@ -23,46 +30,38 @@ function handleSearchSubmit(event) {
         })
         .then(function (data) {
             // console.log(data.objectIDs.length);
-            console.log(data);
-            objIDs = data;
+            console.log(data.objectIDs);
+
+            dataValue = Object.values(data.objectIDs)
 
 
+            // This for loops gets the 3 initial images onto the page. 
             for (var index = 0; index <= 10; index++) {
                 var j = index
-                objectA = data.objectIDs[j];
-
+                objectA = dataValue[j];
                 j++;
-
-                objectB = data.objectIDs[j];
-
+                objectB = dataValue[j];
                 j++;
-
-                objectC = data.objectIDs[j];
-                // console.log("j after= " + j);
+                objectC = dataValue[j];
             }
 
             // console.log(data.objectIDs.length);
             displayObjectData();
-            return;
+            return dataValue;
 
         });
-
-
-
 }
 
-
+// clears the stage, takes the 3 defined values from handleSearchSubmit or next (function called on click, explained below), fetches those object IDs and appends the images to the DOM
 function displayObjectData() {
-
-
-
+    $('#art-image').html("");
     fetch(objectSearch_QueryURL + objectA)
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             console.log(data);
-            console.log(data.primaryImage);
+            console.log(objectA);
             $('#art-image').append("<img src=" + data.primaryImage + ">");
         });
 
@@ -72,7 +71,7 @@ function displayObjectData() {
         })
         .then(function (data) {
             console.log(data);
-            console.log(data.primaryImage);
+            console.log(objectB);
             $('#art-image').append("<img src=" + data.primaryImage + ">");
         });
 
@@ -82,13 +81,37 @@ function displayObjectData() {
         })
         .then(function (data) {
             console.log(data);
-            console.log(data.primaryImage);
+            console.log(objectC);
             $('#art-image').append("<img src=" + data.primaryImageSmall + ">");
         });
 
 }
 
+// listener function that increases the array index on all 3 images on click and re-runs displayObjectData()
+next.addEventListener("click", function (event) {
+    // Stops event from bubbling up and new window opening
+    event.stopPropagation();
+    console.log("click");
+    console.log(index);
+
+
+    objectA = dataValue[index++]
+    objectB = dataValue[index++]
+    objectC = dataValue[index++]
+
+    console.log(objectA, objectB, objectC);
+    displayObjectData();
+
+
+});
 
 searchEl.addEventListener('submit', handleSearchSubmit);
 
-// console.log("pagebottom");
+// This is just here to let me know the whole page of code ran at page load
+console.log("1_jsStart");
+
+// On page load, a quote should be automatically generated and put on the page
+
+// there's a search bar to enter keywords
+
+// once search is initiated, 3 images will show up with at least 1 button to see more images, if time another to go back
