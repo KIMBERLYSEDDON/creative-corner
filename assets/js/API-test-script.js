@@ -1,4 +1,4 @@
-var search = document.querySelector(".search")
+var search = document.querySelector("#search")
 var next = search.querySelector("#next")
 var searchEl = document.querySelector('#searchEl')
 var artImage = document.querySelector('#art-image')
@@ -59,7 +59,10 @@ function handleSearchSubmit(event) {
 
 // clears the stage, takes the 3 defined values from handleSearchSubmit or next (function called on click, explained below), fetches those object IDs and appends the images to the DOM
 function displayObjectData() {
-    $('#art-image').html("");
+    $('#image-result1').html("");
+    $('#image-result2').html("");
+    $('#image-result3').html("");
+
     fetch(objectSearch_QueryURL + objectA)
         .then(function (response) {
             return response.json();
@@ -67,10 +70,9 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectA);
-            imgURL= data.primaryImageSmall
-            console.log(imgURL);
-            $('#art-image').append(
-                '<div><a href=' + imgURL + '><img src=' + imgURL + '></a></div>');
+            // imgURL= data.primaryImageSmall
+            // console.log(imgURL);
+            $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
         });
 
     fetch(objectSearch_QueryURL + objectB)
@@ -80,7 +82,7 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectB);
-            $('#art-image').append("<img src=" + data.primaryImageSmall + ">");
+            $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
         });
 
     fetch(objectSearch_QueryURL + objectC)
@@ -90,7 +92,7 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectC);
-            $('#art-image').append("<img src=" + data.primaryImageSmall + ">");
+            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
         });
 
 }
@@ -113,13 +115,13 @@ next.addEventListener("click", function (event) {
 
 });
 
-    fetch(quotes_QueryURL)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        })
+fetch(quotes_QueryURL)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
 
 searchEl.addEventListener('submit', handleSearchSubmit);
 
