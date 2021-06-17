@@ -2,9 +2,11 @@ var search = document.querySelector(".search")
 var next = search.querySelector("#next")
 var searchEl = document.querySelector('#searchEl')
 var artImage = document.querySelector('#art-image')
+// var APIkey ="1b3ef6189bf76e75dcc7ee085772fb27"
 
 var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
+var quotes_QueryURL = 'https://api.quotable.io/random'
 
 
 var index = 0;
@@ -65,7 +67,10 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectA);
-            $('#art-image').append("<img src=" + data.primaryImageSmall + ">");
+            imgURL= data.primaryImageSmall
+            console.log(imgURL);
+            $('#art-image').append(
+                '<div><a href=' + imgURL + '><img src=' + imgURL + '></a></div>');
         });
 
     fetch(objectSearch_QueryURL + objectB)
@@ -107,6 +112,14 @@ next.addEventListener("click", function (event) {
 
 
 });
+
+    fetch(quotes_QueryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        })
 
 searchEl.addEventListener('submit', handleSearchSubmit);
 
