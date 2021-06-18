@@ -17,7 +17,8 @@ html, body {
     height: 100px;
 }
 
-.man {
+
+#man {
     position: absolute;
     top: 250px;
     left: 80px;
