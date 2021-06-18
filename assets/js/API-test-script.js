@@ -1,6 +1,7 @@
 var search = document.querySelector("#search")
 var next = search.querySelector("#next")
-var artImage = document.querySelector('#art-image-container')
+var artImage = $('#art-image-container')
+var featureEl = document.querySelector('.featureImage')
 // var APIkey ="1b3ef6189bf76e75dcc7ee085772fb27"
 
 var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
@@ -17,12 +18,22 @@ var objectC;
 var objAURL;
 
 var data;
-// var dataValue = [];
 
 // Takes search input, takes the keyword and submits it to API as parameter. 
 // API returns all IDs connected to that parameter (can't figure out how to limit that)
 // Those values are turned into an Array, a 'for' loop selects 3 of the IDs, assigns them to a 
 // variable and passes it off to displayObjectData.
+
+// ________________________
+
+var favButtonClickHandler = function (event) {
+    event.stopPropagation();
+    var favorite = event.target.getAttribute('data-obj')
+    if (favorite) {
+        console.log(favorite);
+    
+      }
+}
 
 function handleSearchSubmit(event) {
     event.preventDefault();
@@ -54,12 +65,12 @@ function handleSearchSubmit(event) {
             return dataValue;
         });
 }
-
 // clears the stage, takes the 3 defined values from handleSearchSubmit or next (function called on click, explained below), fetches those object IDs and appends the images to the DOM
 function displayObjectData() {
     $('#image-result1').html("");
     $('#image-result2').html("");
     $('#image-result3').html("");
+    
     
     fetch(objectSearch_QueryURL + objectA)
         .then(function (response) {
@@ -71,15 +82,11 @@ function displayObjectData() {
             console.log(data.primaryImageSmall);
 
             $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button id="objAFavBtn"> Button </button>');
+            $('#image-result1').append('<button data-object="objA" class="favBtn"> Button </button>');
             objAURL = data.primaryImageSmall
-            $( "#objAFavBtn").click(function(event){
-                event.stopPropagation();
-                console.log("objA click");
-                // saveFavorites();
-            });
+  
 
-
+            
         });
 
     fetch(objectSearch_QueryURL + objectB)
@@ -90,11 +97,12 @@ function displayObjectData() {
             console.log(data);
             console.log(objectB);
             $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result2').append('<button id="objBFavBtn"> Button </button>');
-            $( "#objBFavBtn").click(function(event){
-                event.stopPropagation();
-                console.log("objB click");
-            });
+            $('#image-result2').append('<button data-object="objB" class="favBtn"> Button </button>');
+           
+            // $( "#objBFavBtn").click(function(event){
+            //     event.stopPropagation();
+            //     console.log("objB click");
+            // });
         });
 
     fetch(objectSearch_QueryURL + objectC)
@@ -105,25 +113,24 @@ function displayObjectData() {
             console.log(data);
             console.log(objectC);
             $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result3').append('<button id="objCFavBtn"> Button </button>');
-            $( "#objCFavBtn").click(function(event){
-                event.stopPropagation();
-                console.log("objC click");
-            });
+            $('#image-result3').append('<button data-object="objC" class="favBtn"> Button </button>');
+            
+            // $( "#objCFavBtn").click(function(event){
+            //     event.stopPropagation();
+            //     console.log("objC click");
+            // });
         });
-}
+    
+        
+    }
 
-
-
+ 
 // function saveFavorites() {
 // console.log(objectA);
-    
 //     IDs = {
 //       objIds: objectA,
 //       url: objAURL,
 //     };
-
-
 //     localStorage.setItem("IDs", JSON.stringify(IDs));
 //   }
 
@@ -142,18 +149,27 @@ next.addEventListener("click", function (event) {
     console.log(objectA, objectB, objectC);
     displayObjectData();
 
+});
+artImage.on("click", '.favBtn',function (event) {
+    // Stops event from bubbling up and new window opening
+    event.stopPropagation();
+    console.log(event.target);
+    
+    var favorite = $(event.target)
+    
+    console.log(favorite.siblings()[0]);
+      console.log("FavClick");
+
 
 });
 
-
+// featureEl.on('click', '.favBtn', favButtonClickHandler);
 search.addEventListener('submit', handleSearchSubmit);
 
 
 // This is just here to let me know the whole page of code ran at page load
 console.log("1_jsStart");
 
-// On page load, a quote should be automatically generated and put on the page
-
-// there's a search bar to enter keywords
-
-// once search is initiated, 3 images will show up with at least 1 button to see more images, if time another to go back
+// On page load, a quote should be automatically generated and put on the page.
+// there's a search bar to enter keywords.
+// once search is initiated, 3 images will show up with at least 1 button to see more images, if time another to go back.
