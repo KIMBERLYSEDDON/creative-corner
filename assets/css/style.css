@@ -17,7 +17,8 @@ html, body {
     height: 100px;
 }
 
-.man {
+
+#man {
     position: absolute;
     top: 250px;
     left: 80px;
@@ -40,15 +41,6 @@ html, body {
     border-radius: 50px;
 }
 
-.header {
-    position: fixed;
-    display: flex;
-    margin-top: 20px;
-    bottom: 20px;
-    right: 75px;
-    color: var(--white);
-}
-
 :root {
     --beige: #D9D0C1;
     --drkbeige: #8C826F;
@@ -61,15 +53,6 @@ html, body {
     width: 500px;
 }
 
-.cloud #quote {
-    position: absolute;
-    top: 30px;
-    left: 160px;
-    width: 400px;
-    height: 200px;
-    color: black;
-}
-
 .title {
     position: relative;
     font-size: 5rem;
@@ -78,8 +61,7 @@ html, body {
 
 button #next{
     padding: 40px;
-    color: var(--white);
-    border: none;
+    margin-top: 20px;
 }
 
 .img-trio{

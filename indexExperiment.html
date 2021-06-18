@@ -21,34 +21,36 @@
             </ul>
         </div>
     </nav>
-    <header class="header">
+    <header class="header  uk-position-bottom-right uk-transform-origin-bottom-right uk-animation-scale-down uk-transform-origin-top-left uk-margin-large-right">
         <h2 class="title">Creative Corner</h2>
     </header>
     <main>
         <section class="cloud">
             <img src="./images/cloudscreenshot.jpg" alt="cloud">
-            <div id="quote" class="centered">
+            <div id="quote" class="uk-animation-scale-up uk-position-medium uk-position-cover uk-flex uk-flex-center uk-flex-middle">
 
             </div>
         </section>
-        <section class="man">
+    
+        
+        <section class="uk-position-bottom-left" id="man">
             <img src="./images/clipart1126199.png" alt="man thinking">
-        </section>
-
+        </section>    
+     
+        
         <section class="search" id="search">
             <form class="uk-search uk-search-large">
                 <input id="search-input" class="uk-search-input" type="search">
                 <button class="uk-search-icon-flip" uk-search-icon></button>
             </form>
-
+            <button class="uk-button-text uk-position--top-center" id="next" uk-icon="icon: arrow-right; ratio: 2"></button>
             <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="art-image-container">
 
                 <div id="image-result1"></div>
                 <div id="image-result2"></div>
                 <div id="image-result3"></div>
-
             </div>
-            <button class="uk-button-text" id="next" uk-icon="icon: arrow-right; ratio: 2"></button>
+            
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
