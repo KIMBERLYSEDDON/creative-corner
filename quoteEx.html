@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Creative Corner</title>
 </head>
 
 <body>
     <section class="header">
-        <h2>~Creative Corner~</h2>
+        <h2 class="title">Creative Corner</h2>
     </section>
     <main>
         <section class="cloud">
@@ -28,15 +28,15 @@
         </section>
 
         <section class="search">
-            <form id="searchEl">
-            <input class="searchinput" id="search-input" type="text" placeholder="Enter a word here...">
+            <form class="uk-search uk-search-large">
+            <input id="search-input" class="uk-search-input" type="search">
             <button class="uk-search-icon-flip" uk-search-icon></button>
             </form>
             <div class="content" id="art-image">
                 The image should appear here
         
             </div>
-            <button id="next"></button>
+            <button class="uk-button-default" id="next" uk-icon="icon: arrow-right; ratio: 2"></button>
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

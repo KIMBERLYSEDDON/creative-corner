@@ -1,8 +1,7 @@
 var search = document.querySelector("#search")
 var next = search.querySelector("#next")
-var searchEl = document.querySelector('#searchEl')
-var artImage = document.querySelector('#art-image')
-
+var artImage = document.querySelector('#art-image-container')
+// var APIkey ="1b3ef6189bf76e75dcc7ee085772fb27"
 
 var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
@@ -147,7 +146,7 @@ next.addEventListener("click", function (event) {
 });
 
 
-searchEl.addEventListener('submit', handleSearchSubmit);
+search.addEventListener('submit', handleSearchSubmit);
 
 
 // This is just here to let me know the whole page of code ran at page load

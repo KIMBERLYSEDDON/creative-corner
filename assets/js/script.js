@@ -24,4 +24,4 @@ var getQuote = function (quote) {
       document.querySelector("#quote").appendChild(quoteEl)
 
   }
-  getQuote()
+getQuote()

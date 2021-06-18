@@ -13,32 +13,42 @@
 </head>
 
 <body>
-    <section class="header">
-        <h2>~Creative Corner~</h2>
-    </section>
+    <nav class="uk-nav uk-nav-default">
+        <button id = "menu-btn" class="uk-button-text" uk-icon="icon: menu; ratio: 2"></button>
+        <div uk-dropdown="mode: hover">
+            <ul id="menu" class="uk-nav uk-dropdown-nav">
+                <li><a href="favorites.html">Favorites Page</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header class="header">
+        <h2 class="title">Creative Corner</h2>
+    </header>
     <main>
         <section class="cloud">
             <img src="./images/cloudscreenshot.jpg" alt="cloud">
-            <div id="quote" class="centered">HELLO</div>
+            <div id="quote" class="centered">
+
+            </div>
         </section>
         <section class="man">
             <img src="./images/clipart1126199.png" alt="man thinking">
         </section>
 
         <section class="search" id="search">
-            <form id="searchEl">
-                <input class="searchinput" id="search-input" type="text" placeholder="Enter a word here...">
+            <form class="uk-search uk-search-large">
+                <input id="search-input" class="uk-search-input" type="search">
                 <button class="uk-search-icon-flip" uk-search-icon></button>
             </form>
 
-            <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="art-image">
+            <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="art-image-container">
 
                 <div id="image-result1"></div>
                 <div id="image-result2"></div>
                 <div id="image-result3"></div>
 
             </div>
-            <button id="next"></button>
+            <button class="uk-button-text" id="next" uk-icon="icon: arrow-right; ratio: 2"></button>
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -48,5 +58,4 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
     <script src="./assets/js/API-test-script.js"></script>
 </body>
-
 </html>
