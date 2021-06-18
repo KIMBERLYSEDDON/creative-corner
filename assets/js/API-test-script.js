@@ -10,7 +10,7 @@ var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collecti
 // var APIkey =""
 
 var index = 0;
-var IDs = [];
+var favImageArray = [];
 
 var objectA;
 var objectB;
@@ -81,9 +81,9 @@ function displayObjectData() {
             console.log(objectA);
             console.log(data.primaryImageSmall);
 
-            $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button data-object="objA" class="favBtn"> Button </button>');
-            objAURL = data.primaryImageSmall
+            $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectA + ' src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result1').append('<button class="favBtn"> Button </button>');
+            
   
 
             
@@ -96,9 +96,9 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectB);
-            $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectB + ' src=' + data.primaryImageSmall + '> </a>');
             $('#image-result2').append('<button data-object="objB" class="favBtn"> Button </button>');
-           
+            
             // $( "#objBFavBtn").click(function(event){
             //     event.stopPropagation();
             //     console.log("objB click");
@@ -112,9 +112,9 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectC);
-            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectC + ' src=' + data.primaryImageSmall + '> </a>');
             $('#image-result3').append('<button data-object="objC" class="favBtn"> Button </button>');
-            
+
             // $( "#objCFavBtn").click(function(event){
             //     event.stopPropagation();
             //     console.log("objC click");
@@ -150,17 +150,23 @@ next.addEventListener("click", function (event) {
     displayObjectData();
 
 });
+
 artImage.on("click", '.favBtn',function (event) {
-    // Stops event from bubbling up and new window opening
+
     event.stopPropagation();
     console.log(event.target);
     
-    var favorite = $(event.target)
+    var favBtn = $(event.target)
     
-    console.log(favorite.siblings()[0]);
-      console.log("FavClick");
-
-
+    console.log(favBtn.siblings());
+    
+    console.log(favBtn.siblings()[0].href);
+    console.log(favBtn.siblings()[0].children[0].attributes[0].value);
+    var myObj = {href:favBtn.siblings()[0].href, ObjId:favBtn.siblings()[0].children[0].attributes[0].value}
+    console.log(myObj);
+    favImageArray.push(myObj)
+    console.log(favImageArray);
+    localStorage.setItem("favoriteImages",JSON.stringify(favImageArray));
 });
 
 // featureEl.on('click', '.favBtn', favButtonClickHandler);
