@@ -206,16 +206,13 @@ console.log("1_jsStart");
 // once search is initiated, 3 images will show up with at least 1 button to see more images, if time another to go back.
 
 var getQuote = function (quote) {
-    var apiUrl = 'https://api.fisenko.net/quotes'
+    var apiUrl = 'https://api.quotable.io/random'
   
-    fetch(apiUrl, {
-      mode: "no-cors",
-    })
+    fetch(apiUrl)
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log(data.text, data.author);
-            displayQuote(data.text, data.author);
+            displayQuote(data.content, data.author);
           });
         } else {
           alert('Error: ' + response.statusText);
