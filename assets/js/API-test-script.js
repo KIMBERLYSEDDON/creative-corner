@@ -85,20 +85,22 @@ function displayObjectData() {
             console.log(data);
             console.log(objectA);
 
-            $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button id="objAFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
-            objAURL = data.primaryImageSmall
-            $( "#objAFavBtn").click(function(event){
-                event.stopPropagation();
-                console.log("objA click");
-                // saveFavorites();
-            });
+            // $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
+            // $('#image-result1').append('<button id="objAFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
+            // objAURL = data.primaryImageSmall
+            // $( "#objAFavBtn").click(function(event){
+            //     event.stopPropagation();
+            //     console.log("objA click");
+            //     // saveFavorites();
+            // });
 
             console.log(data.primaryImageSmall);
 
             $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectA + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button class="favBtn"> Add to Favorites </button>');       
+            $('#image-result1').append('<button class="favBtn">Add to Favorites</button>');       
         });
+
+
 
     fetch(objectSearch_QueryURL + objectB)
         .then(function (response) {
@@ -108,14 +110,8 @@ function displayObjectData() {
             console.log(data);
             console.log(objectB);
             $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectB + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result2').append('<button class="favBtn"> Add to Favorites </button>');
+            $('#image-result2').append('<button class="favBtn">Add to Favorites</button>');
 
-            $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result2').append('<button id="objBFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
-            $( "#objBFavBtn").click(function(event){
-                event.stopPropagation();
-                console.log("objB click");
-            });
         });
 
     fetch(objectSearch_QueryURL + objectC)
@@ -126,22 +122,13 @@ function displayObjectData() {
             console.log(data);
             console.log(objectC);
             $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectC + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result3').append('<button class="favBtn"> Add to Favorites </button>');
-            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img class="img-card" src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result3').append('<button id="objCFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
-            $( "#objCFavBtn").click(function(event){
-                event.stopPropagation();
-                console.log("objC click");
-            });
+            $('#image-result3').append('<button class="favBtn">Add to Favorites</button>');
+
         });
 }
 
 
 
-        });
-    
-        
-    }
 
 // listener function that increases the array index on all 3 images on click and re-runs displayObjectData()
 next.addEventListener("click", function (event) {
@@ -164,11 +151,11 @@ artImage.on("click", '.favBtn',function (event) {
 
     event.stopPropagation();
     console.log(event.target);
+    console.log(this);
     
     var favBtn = $(event.target)
-    
-    console.log(favBtn.siblings());
-    
+    console.log(favBtn.siblings()[0]);
+
     console.log(favBtn.siblings()[0].href);
     console.log(favBtn.siblings()[0].children[0].attributes[0].value);
     var myObj = {href:favBtn.siblings()[0].href, ObjId:favBtn.siblings()[0].children[0].attributes[0].value}
