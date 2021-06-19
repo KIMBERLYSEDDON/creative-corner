@@ -19,7 +19,7 @@ var getQuote = function (quote) {
 
 var displayQuote = function (quote, author){
       var quoteEl = document.createElement('p')
-      quoteEl.setAttribute("class", " uk-overlay uk-responsive-width uk-text-center uk-margin-xlarge-top")
+      quoteEl.setAttribute("class", "quoteEl uk-text-center uk-margin-auto-vertical uk-flex-middle uk-flex-center uk-child-width-expand")
       // var quoteTxt = document.createElement('p')
       // quoteTxt.setAttribute("class", "uk-text-center")
       quoteEl.textContent = '"' + quote + '"' + '   -' + author

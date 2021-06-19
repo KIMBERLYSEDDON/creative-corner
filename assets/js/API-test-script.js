@@ -70,8 +70,8 @@ function displayObjectData() {
             console.log(objectA);
             console.log(data.primaryImageSmall);
 
-            $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button id="objAFavBtn"> Button </button>');
+            $('#image-result1').append('<a class="img-card uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result1').append('<button id="objAFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
             objAURL = data.primaryImageSmall
             $( "#objAFavBtn").click(function(event){
                 event.stopPropagation();
@@ -89,8 +89,8 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectB);
-            $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result2').append('<button id="objBFavBtn"> Button </button>');
+            $('#image-result2').append('<a class="img-card uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result2').append('<button id="objBFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
             $( "#objBFavBtn").click(function(event){
                 event.stopPropagation();
                 console.log("objB click");
@@ -104,8 +104,8 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectC);
-            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result3').append('<button id="objCFavBtn"> Button </button>');
+            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img class="img-card" src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result3').append('<button id="objCFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
             $( "#objCFavBtn").click(function(event){
                 event.stopPropagation();
                 console.log("objC click");
