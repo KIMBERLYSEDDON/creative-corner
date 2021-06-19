@@ -20,30 +20,8 @@ var getQuote = function (quote) {
 var displayQuote = function (quote, author){
       var quoteEl = document.createElement('p')
       quoteEl.setAttribute("class", "quoteEl uk-text-center uk-margin-auto-vertical uk-flex-middle uk-flex-center uk-child-width-expand")
-      // var quoteTxt = document.createElement('p')
-      // quoteTxt.setAttribute("class", "uk-text-center")
       quoteEl.textContent = '"' + quote + '"' + '   -' + author
-      // console.log(quoteTxt)
-      // quoteEl.appendChild(quoteTxt)
       document.querySelector("#quote").append(quoteEl)
 
   }
 getQuote()
-
-
-// var displayQuote = function (quote, author){
-//   var quoteCloud = document.createElement('img')
-//   quoteCloud.setAttribute("src", "./images/cloudscreenshot.jpg")
-//   quoteCloud.setAttribute("alt", "thought cloud")
-//   // <img src="./images/cloudscreenshot.jpg" alt="cloud">
-//     var quoteEl = document.createElement('div')
-//     quoteEl.setAttribute("class", "uk-position-cover, border: 2px solid black")
-//     // var quoteTxt = document.createElement('p')
-//     quoteEl.setAttribute("class", "color: black, z-index: 5")
-//     quoteEl.textContent = '"' + quote + '"' + '   -' + author
-//     // console.log(quoteTxt)
-//     // quoteEl.appendChild(quoteTxt)
-//     quoteCloud.appendChild(quoteEl)
-//     document.querySelector("#quote").appendChild(quoteCloud)
-
-// }
