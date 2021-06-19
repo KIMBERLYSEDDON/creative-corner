@@ -84,7 +84,7 @@ function displayObjectData() {
             console.log(data.primaryImageSmall);
 
             $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectA + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button class="favBtn"> Button </button>');       
+            $('#image-result1').append('<button class="favBtn"> Add to Favorites </button>');       
         });
 
     fetch(objectSearch_QueryURL + objectB)
@@ -95,7 +95,7 @@ function displayObjectData() {
             console.log(data);
             console.log(objectB);
             $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectB + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result2').append('<button data-object="objB" class="favBtn"> Button </button>');
+            $('#image-result2').append('<button class="favBtn"> Add to Favorites </button>');
 
         });
 
@@ -107,12 +107,8 @@ function displayObjectData() {
             console.log(data);
             console.log(objectC);
             $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectC + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result3').append('<button data-object="objC" class="favBtn"> Button </button>');
+            $('#image-result3').append('<button class="favBtn"> Add to Favorites </button>');
 
-            // $( "#objCFavBtn").click(function(event){
-            //     event.stopPropagation();
-            //     console.log("objC click");
-            // });
         });
     
         
@@ -156,7 +152,9 @@ artImage.on("click", '.favBtn',function (event) {
 
 // without this, local storage got overwritten everytime you come back to index.html and try to add more favorites
 
-
+if (favImageArray !== null || favImageArray !== undefined) {
+    favImageArray = JSON.parse(localStorage.getItem("favoriteImages"))
+}
 // favImageArray = JSON.parse(localStorage.getItem("favoriteImages"));
 
 search.addEventListener('submit', handleSearchSubmit);
