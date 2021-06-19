@@ -208,7 +208,9 @@ console.log("1_jsStart");
 var getQuote = function (quote) {
     var apiUrl = 'https://api.fisenko.net/quotes'
   
-    fetch(apiUrl)
+    fetch(apiUrl, {
+      mode: "no-cors",
+    })
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
