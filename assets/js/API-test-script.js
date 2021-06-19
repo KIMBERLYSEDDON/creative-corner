@@ -2,7 +2,7 @@ var search = document.querySelector("#search")
 var next = search.querySelector("#next")
 var artImage = $('#art-image-container')
 var featureEl = document.querySelector('.featureImage')
-// var APIkey ="1b3ef6189bf76e75dcc7ee085772fb27"
+
 
 var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
@@ -19,10 +19,7 @@ var objAURL;
 
 var data;
 
-// Takes search input, takes the keyword and submits it to API as parameter. 
-// API returns all IDs connected to that parameter (can't figure out how to limit that)
-// Those values are turned into an Array, a 'for' loop selects 3 of the IDs, assigns them to a 
-// variable and passes it off to displayObjectData.
+
 
 // ________________________
 
@@ -34,6 +31,11 @@ var favButtonClickHandler = function (event) {
     
       }
 }
+
+// Takes search input, takes the keyword and submits it to API as parameter. 
+// API returns all IDs connected to that parameter (can't figure out how to limit that)
+// Those values are turned into an Array, a 'for' loop selects 3 of the IDs, assigns them to a 
+// variable and passes it off to displayObjectData.
 
 function handleSearchSubmit(event) {
     event.preventDefault();
@@ -82,11 +84,7 @@ function displayObjectData() {
             console.log(data.primaryImageSmall);
 
             $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectA + ' src=' + data.primaryImageSmall + '> </a>');
-            $('#image-result1').append('<button class="favBtn"> Button </button>');
-            
-  
-
-            
+            $('#image-result1').append('<button class="favBtn"> Button </button>');       
         });
 
     fetch(objectSearch_QueryURL + objectB)
@@ -98,11 +96,7 @@ function displayObjectData() {
             console.log(objectB);
             $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectB + ' src=' + data.primaryImageSmall + '> </a>');
             $('#image-result2').append('<button data-object="objB" class="favBtn"> Button </button>');
-            
-            // $( "#objBFavBtn").click(function(event){
-            //     event.stopPropagation();
-            //     console.log("objB click");
-            // });
+
         });
 
     fetch(objectSearch_QueryURL + objectC)
@@ -123,16 +117,6 @@ function displayObjectData() {
     
         
     }
-
- 
-// function saveFavorites() {
-// console.log(objectA);
-//     IDs = {
-//       objIds: objectA,
-//       url: objAURL,
-//     };
-//     localStorage.setItem("IDs", JSON.stringify(IDs));
-//   }
 
 // listener function that increases the array index on all 3 images on click and re-runs displayObjectData()
 next.addEventListener("click", function (event) {
@@ -164,12 +148,17 @@ artImage.on("click", '.favBtn',function (event) {
     console.log(favBtn.siblings()[0].children[0].attributes[0].value);
     var myObj = {href:favBtn.siblings()[0].href, ObjId:favBtn.siblings()[0].children[0].attributes[0].value}
     console.log(myObj);
-    favImageArray.push(myObj)
+    console.log(favImageArray);
+    favImageArray.push(myObj);
     console.log(favImageArray);
     localStorage.setItem("favoriteImages",JSON.stringify(favImageArray));
 });
 
-// featureEl.on('click', '.favBtn', favButtonClickHandler);
+// without this, local storage got overwritten everytime you come back to index.html and try to add more favorites
+
+
+// favImageArray = JSON.parse(localStorage.getItem("favoriteImages"));
+
 search.addEventListener('submit', handleSearchSubmit);
 
 
