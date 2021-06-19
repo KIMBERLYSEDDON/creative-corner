@@ -85,6 +85,14 @@ function displayObjectData() {
             console.log(data);
             console.log(objectA);
 
+            $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result1').append('<button id="objAFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
+            objAURL = data.primaryImageSmall
+            $( "#objAFavBtn").click(function(event){
+                event.stopPropagation();
+                console.log("objA click");
+                // saveFavorites();
+            });
 
             console.log(data.primaryImageSmall);
 
@@ -102,6 +110,12 @@ function displayObjectData() {
             $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectB + ' src=' + data.primaryImageSmall + '> </a>');
             $('#image-result2').append('<button class="favBtn"> Add to Favorites </button>');
 
+            $('#image-result2').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result2').append('<button id="objBFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
+            $( "#objBFavBtn").click(function(event){
+                event.stopPropagation();
+                console.log("objB click");
+            });
         });
 
     fetch(objectSearch_QueryURL + objectC)
@@ -113,6 +127,16 @@ function displayObjectData() {
             console.log(objectC);
             $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectC + ' src=' + data.primaryImageSmall + '> </a>');
             $('#image-result3').append('<button class="favBtn"> Add to Favorites </button>');
+            $('#image-result3').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + '><img class="img-card" src=' + data.primaryImageSmall + '> </a>');
+            $('#image-result3').append('<button id="objCFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
+            $( "#objCFavBtn").click(function(event){
+                event.stopPropagation();
+                console.log("objC click");
+            });
+        });
+}
+
+
 
         });
     
