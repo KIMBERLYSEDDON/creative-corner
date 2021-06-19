@@ -3,7 +3,6 @@ var next = search.querySelector("#next")
 var artImage = $('#art-image-container')
 var featureEl = document.querySelector('.featureImage')
 
-
 var keywordSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q='
 var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/'
 // var test_QueryURL = 'https://api.quotable.io/random'
@@ -11,15 +10,10 @@ var objectSearch_QueryURL = 'https://collectionapi.metmuseum.org/public/collecti
 
 var index = 0;
 var favImageArray = [];
-
 var objectA;
 var objectB;
 var objectC;
-var objAURL;
-
 var data;
-
-
 
 // ________________________
 
@@ -40,8 +34,9 @@ var favButtonClickHandler = function (event) {
 function handleSearchSubmit(event) {
     event.preventDefault();
     // console.log("click");
-    searchValue = document.querySelector('#search-input').value;
 
+    var searchValue = $('#search-input').val();
+    console.log(searchValue);
     fetch(keywordSearch_QueryURL + searchValue)
         .then(function (response) {
             return response.json();
@@ -49,12 +44,20 @@ function handleSearchSubmit(event) {
         .then(function (data) {
             console.log(data);
             // console.log(data.objectIDs.length);
+            if (data.objectIDs === null) {
+                UIkit.modal.dialog('<p style="text-align:center; padding: 20px; margin: 10em;">No results found. Try another word!</p>');
+                return;
+            }
             console.log(data.objectIDs);
             dataValue = Object.values(data.objectIDs)
-
+            
             // This for loops gets the 3 initial images onto the page.
             // index declaration after index=0 could be randomized to switch up initial results 
-            for (var index = 0; index <= 15; index++) {
+            objectA = dataValue[0];
+            objectB = dataValue[1];
+            objectC = dataValue[2];
+            for (var index = 0; index <= 1; index++) {
+                
                 var j = index
                 objectA = dataValue[j];
                 j++;
@@ -81,6 +84,8 @@ function displayObjectData() {
         .then(function (data) {
             console.log(data);
             console.log(objectA);
+
+
             console.log(data.primaryImageSmall);
 
             $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img data-object=' + objectA + ' src=' + data.primaryImageSmall + '> </a>');
@@ -150,18 +155,13 @@ artImage.on("click", '.favBtn',function (event) {
     localStorage.setItem("favoriteImages",JSON.stringify(favImageArray));
 });
 
-// without this, local storage got overwritten everytime you come back to index.html and try to add more favorites
-
-if (favImageArray !== null || favImageArray !== undefined) {
-    favImageArray = JSON.parse(localStorage.getItem("favoriteImages"))
-}
-// favImageArray = JSON.parse(localStorage.getItem("favoriteImages"));
 
 search.addEventListener('submit', handleSearchSubmit);
 
 
 // This is just here to let me know the whole page of code ran at page load
 console.log("1_jsStart");
+
 
 // On page load, a quote should be automatically generated and put on the page.
 // there's a search bar to enter keywords.
