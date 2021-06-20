@@ -1,5 +1,5 @@
 *{
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', monospace!important;
 }
 
 html, body {
@@ -8,6 +8,8 @@ html, body {
 
 
 }
+
+
 .cloud {
     position: absolute;
     top: 20px;
@@ -65,6 +67,7 @@ button #next{
     margin-top: 20px;
 }
 
+
 .img-trio{
     max-width: 250px;
     max-height: 250px;
@@ -79,22 +82,45 @@ button #next{
     height: 230px;
 }
 
-.bookmark {
+.favBtn {
     opacity: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.486);
     position: relative;
-    bottom: 40px;
+    bottom: 30px;
 }
 
-#image-result1:hover .bookmark {
+#image-result1:hover .favBtn {
     opacity: 1;
     transition: .6s ease-in-out
 }
-#image-result2:hover .bookmark {
+#image-result2:hover .favBtn {
     opacity: 1;
     transition: .6s ease-in-out
 }
-#image-result3:hover .bookmark {
+#image-result3:hover .favBtn {
     opacity: 1;
     transition: .6s ease-in-out
 }
 
+#favContainer{
+    margin:2em;
+    
+}
+
+.favHeader{
+    text-align: center;
+
+}
+
+#clrFavs{
+    float: right;
+    border-color: rgb(51, 51, 51);
+}
+.favNav {
+    margin: 2em!important;
+    margin-bottom: 0!important;
+
+}
