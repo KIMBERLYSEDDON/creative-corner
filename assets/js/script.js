@@ -78,20 +78,8 @@ function displayObjectData() {
       // console.log(data);
       // console.log(objectA);
       // console.log(data.primaryImageSmall);
-      $("#image-result1").append(
-        '<a class="uk-inline uk-width-auto" href=' +
-        data.primaryImageSmall +
-        ' data-caption="' +
-        data.title +
-        '"><img data-object=' +
-        objectA +
-        " src=" +
-        data.primaryImageSmall +
-        "> </a>"
-      );
-      $("#image-result1").append(
-        '<button class="favBtn"> + </button>'
-      );
+      $("#image-result1").append('<a class="uk-inline uk-width-auto" href=' +data.primaryImageSmall +' data-caption="' +data.title +'"><img data-object=' +objectA +" src=" +data.primaryImageSmall +"> </a>");
+      $("#image-result1").append('<button class="favBtn"> + </button>');
     });
 
   fetch(objectSearch_QueryURL + objectB)
@@ -101,20 +89,8 @@ function displayObjectData() {
     .then(function (data) {
       // console.log(data);
       // console.log(objectB);
-      $("#image-result2").append(
-        '<a class="uk-inline uk-width-auto" href=' +
-        data.primaryImageSmall +
-        ' data-caption="' +
-        data.title +
-        '"><img data-object=' +
-        objectB +
-        " src=" +
-        data.primaryImageSmall +
-        "> </a>"
-      );
-      $("#image-result2").append(
-        '<button class="favBtn"> + </button>'
-      );
+      $("#image-result2").append('<a class="uk-inline uk-width-auto" href=' +data.primaryImageSmall + ' data-caption="' +data.title + '"><img data-object=' + objectB + " src=" + data.primaryImageSmall + "> </a>");
+      $("#image-result2").append('<button class="favBtn"> + </button>');
     });
 
   fetch(objectSearch_QueryURL + objectC)
@@ -124,20 +100,8 @@ function displayObjectData() {
     .then(function (data) {
       // console.log(data);
       // console.log(objectC);
-      $("#image-result3").append(
-        '<a class="uk-inline uk-width-auto" href=' +
-        data.primaryImageSmall +
-        ' data-caption="' +
-        data.title +
-        '"><img data-object=' +
-        objectC +
-        " src=" +
-        data.primaryImageSmall +
-        "> </a>"
-      );
-      $("#image-result3").append(
-        '<button class="favBtn"> + </button>'
-      );
+      $("#image-result3").append('<a class="uk-inline uk-width-auto" href=' +data.primaryImageSmall +' data-caption="' +data.title +'"><img data-object=' +objectC +" src=" +data.primaryImageSmall + "> </a>");
+      $("#image-result3").append( '<button class="favBtn"> + </button>');
     });
 }
 
@@ -169,7 +133,7 @@ artImage.on("click", ".favBtn", function (event) {
 
   var favBtn = $(event.target);
   this.innerHTML = "✓"
-  console.log(favBtn.siblings()[0]);
+  // console.log(favBtn.siblings()[0]);
 
   // console.log(favBtn.siblings()[0]);
   // console.log(favBtn.siblings()[0].href);
