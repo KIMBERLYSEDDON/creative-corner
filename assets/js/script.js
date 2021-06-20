@@ -11,13 +11,17 @@ var objectSearch_QueryURL =
 // var APIkey =""
 
 var index = 0;
+
 var favImageArray = [];
+
 var objectA;
 var objectB;
 var objectC;
 var data;
 
 // ________________________
+
+
 
 var favButtonClickHandler = function (event) {
   event.stopPropagation();
@@ -86,14 +90,6 @@ function displayObjectData() {
       console.log(data);
       console.log(objectA);
 
-      // $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
-      // $('#image-result1').append('<button id="objAFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
-      // objAURL = data.primaryImageSmall
-      // $( "#objAFavBtn").click(function(event){
-      //     event.stopPropagation();
-      //     console.log("objA click");
-      //     // saveFavorites();
-      // });
 
       console.log(data.primaryImageSmall);
 
@@ -175,6 +171,12 @@ next.addEventListener("click", function (event) {
   displayObjectData();
 });
 
+if (favImageArray.length === 0) {
+  console.log("doing something");
+  favImageArray = JSON.parse(localStorage.getItem("favoriteImages"));
+  if (favImageArray.length === 0){console.log("no favs");}
+};
+
 artImage.on("click", ".favBtn", function (event) {
   event.stopPropagation();
   console.log(event.target);
@@ -189,8 +191,8 @@ artImage.on("click", ".favBtn", function (event) {
     href: favBtn.siblings()[0].href,
     ObjId: favBtn.siblings()[0].children[0].attributes[0].value,
   };
-  console.log(myObj);
-  console.log(favImageArray);
+  // console.log(myObj);
+  // console.log(favImageArray);
   favImageArray.push(myObj);
   console.log(favImageArray);
   localStorage.setItem("favoriteImages", JSON.stringify(favImageArray));
@@ -199,7 +201,7 @@ artImage.on("click", ".favBtn", function (event) {
 search.addEventListener("submit", handleSearchSubmit);
 
 // This is just here to let me know the whole page of code ran at page load
-console.log("1_jsStart");
+// console.log("1_jsStart");
 
 // On page load, a quote should be automatically generated and put on the page.
 // there's a search bar to enter keywords.
