@@ -182,7 +182,11 @@ artImage.on("click", ".favBtn", function (event) {
 
   // console.log(myObj);
   // console.log(favImageArray);
+  
+  if (favImageArray === null) {
 
+    favImageArray = []; 
+  }
   favImageArray.push(myObj);
   localStorage.setItem("favoriteImages", JSON.stringify(favImageArray));
 });
