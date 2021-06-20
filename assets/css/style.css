@@ -98,3 +98,6 @@ button #next{
     transition: .6s ease-in-out
 }
 
+#favContainer{
+    margin:3em;
+}
