@@ -79,21 +79,21 @@ button #next{
     height: 230px;
 }
 
-.bookmark {
+.favBtn {
     opacity: 0;
     position: relative;
     bottom: 40px;
 }
 
-#image-result1:hover .bookmark {
+#image-result1:hover .favBtn {
     opacity: 1;
     transition: .6s ease-in-out
 }
-#image-result2:hover .bookmark {
+#image-result2:hover .favBtn {
     opacity: 1;
     transition: .6s ease-in-out
 }
-#image-result3:hover .bookmark {
+#image-result3:hover .favBtn {
     opacity: 1;
     transition: .6s ease-in-out
 }
