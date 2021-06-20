@@ -109,7 +109,7 @@ function displayObjectData() {
           "> </a>"
       );
       $("#image-result1").append(
-        '<button class="favBtn">Add to Favorites</button>'
+        '<button class="favBtn"> + </button>'
       );
     });
 
@@ -132,7 +132,7 @@ function displayObjectData() {
           "> </a>"
       );
       $("#image-result2").append(
-        '<button class="favBtn">Add to Favorites</button>'
+        '<button class="favBtn"> + </button>'
       );
     });
 
@@ -155,7 +155,7 @@ function displayObjectData() {
           "> </a>"
       );
       $("#image-result3").append(
-        '<button class="favBtn">Add to Favorites</button>'
+        '<button class="favBtn"> + </button>'
       );
     });
 }
@@ -181,6 +181,7 @@ artImage.on("click", ".favBtn", function (event) {
   console.log(this);
 
   var favBtn = $(event.target);
+  this.innerHTML = "✓"
   console.log(favBtn.siblings()[0]);
 
   console.log(favBtn.siblings()[0].href);
