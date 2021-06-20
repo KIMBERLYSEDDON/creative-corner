@@ -7,11 +7,11 @@ var keywordSearch_QueryURL =
   "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=";
 var objectSearch_QueryURL =
   "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
-// var test_QueryURL = 'https://api.quotable.io/random'
-// var APIkey =""
 
-var index = 0;
+
 var favImageArray = [];
+var index = 0;
+
 var objectA;
 var objectB;
 var objectC;
@@ -19,13 +19,6 @@ var data;
 
 // ________________________
 
-var favButtonClickHandler = function (event) {
-  event.stopPropagation();
-  var favorite = event.target.getAttribute("data-obj");
-  if (favorite) {
-    console.log(favorite);
-  }
-};
 
 // Takes search input, takes the keyword and submits it to API as parameter.
 // API returns all IDs connected to that parameter (can't figure out how to limit that)
@@ -34,16 +27,15 @@ var favButtonClickHandler = function (event) {
 
 function handleSearchSubmit(event) {
   event.preventDefault();
-  // console.log("click");
 
   var searchValue = $("#search-input").val();
-  console.log(searchValue);
+  // console.log(searchValue);
   fetch(keywordSearch_QueryURL + searchValue)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      // console.log(data);
       // console.log(data.objectIDs.length);
       if (data.objectIDs === null) {
         UIkit.modal.dialog(
@@ -51,7 +43,7 @@ function handleSearchSubmit(event) {
         );
         return;
       }
-      console.log(data.objectIDs);
+      // console.log(data.objectIDs);
       dataValue = Object.values(data.objectIDs);
 
       // This for loops gets the 3 initial images onto the page.
@@ -83,30 +75,19 @@ function displayObjectData() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(objectA);
-
-      // $('#image-result1').append('<a class="uk-inline uk-width-auto" href=' + data.primaryImageSmall + ' data-caption="' + data.title +'"><img src=' + data.primaryImageSmall + '> </a>');
-      // $('#image-result1').append('<button id="objAFavBtn" class="bookmark uk-button-text uk-overlay-primary" uk-overlay-icon="icon: bookmark; ratio: 2"></button>');
-      // objAURL = data.primaryImageSmall
-      // $( "#objAFavBtn").click(function(event){
-      //     event.stopPropagation();
-      //     console.log("objA click");
-      //     // saveFavorites();
-      // });
-
-      console.log(data.primaryImageSmall);
-
+      // console.log(data);
+      // console.log(objectA);
+      // console.log(data.primaryImageSmall);
       $("#image-result1").append(
         '<a class="uk-inline uk-width-auto" href=' +
-          data.primaryImageSmall +
-          ' data-caption="' +
-          data.title +
-          '"><img data-object=' +
-          objectA +
-          " src=" +
-          data.primaryImageSmall +
-          "> </a>"
+        data.primaryImageSmall +
+        ' data-caption="' +
+        data.title +
+        '"><img data-object=' +
+        objectA +
+        " src=" +
+        data.primaryImageSmall +
+        "> </a>"
       );
       $("#image-result1").append(
         '<button class="favBtn"> + </button>'
@@ -118,18 +99,18 @@ function displayObjectData() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(objectB);
+      // console.log(data);
+      // console.log(objectB);
       $("#image-result2").append(
         '<a class="uk-inline uk-width-auto" href=' +
-          data.primaryImageSmall +
-          ' data-caption="' +
-          data.title +
-          '"><img data-object=' +
-          objectB +
-          " src=" +
-          data.primaryImageSmall +
-          "> </a>"
+        data.primaryImageSmall +
+        ' data-caption="' +
+        data.title +
+        '"><img data-object=' +
+        objectB +
+        " src=" +
+        data.primaryImageSmall +
+        "> </a>"
       );
       $("#image-result2").append(
         '<button class="favBtn"> + </button>'
@@ -141,18 +122,18 @@ function displayObjectData() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(objectC);
+      // console.log(data);
+      // console.log(objectC);
       $("#image-result3").append(
         '<a class="uk-inline uk-width-auto" href=' +
-          data.primaryImageSmall +
-          ' data-caption="' +
-          data.title +
-          '"><img data-object=' +
-          objectC +
-          " src=" +
-          data.primaryImageSmall +
-          "> </a>"
+        data.primaryImageSmall +
+        ' data-caption="' +
+        data.title +
+        '"><img data-object=' +
+        objectC +
+        " src=" +
+        data.primaryImageSmall +
+        "> </a>"
       );
       $("#image-result3").append(
         '<button class="favBtn"> + </button>'
@@ -175,62 +156,69 @@ next.addEventListener("click", function (event) {
   displayObjectData();
 });
 
+if (favImageArray.length === 0) {
+
+  favImageArray = JSON.parse(localStorage.getItem("favoriteImages"));
+
+};
+
 artImage.on("click", ".favBtn", function (event) {
   event.stopPropagation();
-  console.log(event.target);
-  console.log(this);
+  // console.log(event.target);
+  // console.log(this);
 
   var favBtn = $(event.target);
   this.innerHTML = "✓"
   console.log(favBtn.siblings()[0]);
 
-  console.log(favBtn.siblings()[0].href);
-  console.log(favBtn.siblings()[0].children[0].attributes[0].value);
+  // console.log(favBtn.siblings()[0]);
+  // console.log(favBtn.siblings()[0].href);
+  // console.log(favBtn.siblings()[0].children[0].attributes[0].value);
+
   var myObj = {
     href: favBtn.siblings()[0].href,
     ObjId: favBtn.siblings()[0].children[0].attributes[0].value,
   };
-  console.log(myObj);
-  console.log(favImageArray);
+
+  // console.log(myObj);
+  // console.log(favImageArray);
+
   favImageArray.push(myObj);
-  console.log(favImageArray);
   localStorage.setItem("favoriteImages", JSON.stringify(favImageArray));
 });
 
 search.addEventListener("submit", handleSearchSubmit);
 
-// This is just here to let me know the whole page of code ran at page load
-console.log("1_jsStart");
 
 // On page load, a quote should be automatically generated and put on the page.
 // there's a search bar to enter keywords.
 // once search is initiated, 3 images will show up with at least 1 button to see more images, if time another to go back.
 
 var getQuote = function (quote) {
-    var apiUrl = 'https://api.quotable.io/random'
-  
-    fetch(apiUrl)
-      .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {
-            displayQuote(data.content, data.author);
-          });
-        } else {
-          alert('Error: ' + response.statusText);
-        }
-      })
-      .catch(function (error) {
-        alert('Unable to connect');
-      });
+  var apiUrl = 'https://api.quotable.io/random'
+
+  fetch(apiUrl)
+    .then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          displayQuote(data.content, data.author);
+        });
+      } else {
+        alert('Error: ' + response.statusText);
+      }
+    })
+    .catch(function (error) {
+      alert('Unable to connect');
+    });
 };
 
 
 
-var displayQuote = function (quote, author){
-      var quoteEl = document.createElement('p')
-      quoteEl.setAttribute("class", "quoteEl uk-text-center uk-margin-auto-vertical uk-flex-middle uk-flex-center uk-child-width-expand")
-      quoteEl.textContent = '"' + quote + '"' + '   -' + author
-      document.querySelector("#quote").append(quoteEl)
+var displayQuote = function (quote, author) {
+  var quoteEl = document.createElement('p')
+  quoteEl.setAttribute("class", "quoteEl uk-text-center uk-margin-auto-vertical uk-flex-middle uk-flex-center uk-child-width-expand")
+  quoteEl.textContent = '"' + quote + '"' + '   -' + author
+  document.querySelector("#quote").append(quoteEl)
 
-  }
+}
 getQuote()
