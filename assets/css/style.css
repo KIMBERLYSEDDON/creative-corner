@@ -81,8 +81,12 @@ button #next{
 
 .favBtn {
     opacity: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.486);
     position: relative;
-    bottom: 40px;
+    bottom: 30px;
 }
 
 #image-result1:hover .favBtn {
