@@ -14,13 +14,13 @@ var loadStoredFavs = function (num) {
     }
 };
 
-clrFavs.on("click",function (event) {
-    
-  var favImageArray = []
+clrFavs.on("click", function (event) {
+
+    var favImageArray = []
 
     localStorage.setItem("favoriteImages", JSON.stringify(favImageArray));
     location.reload();
-  });
+});
 
 loadStoredFavs();
 // console.log(storedFavs);
