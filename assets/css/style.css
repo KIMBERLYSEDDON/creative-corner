@@ -9,31 +9,19 @@ html, body {
 
 }
 
-
-.cloud {
-    position: absolute;
-    top: 20px;
-}
-
 .quoteEl {
     position: relative;
     bottom: 200px;
     max-width: 550px;
 }
 #man {
-    position: absolute;
-    top: 250px;
-    left: 80px;
     width: 380px;
     height: 200px;
 }
 
 .search {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    top: 250px;
-    left: 800px;
 }
 
 #search-input {
@@ -123,4 +111,46 @@ button #next{
     margin: 2em!important;
     margin-bottom: 0!important;
 
+}
+@media screen and (max-width:767px)
+{
+  .search{ 
+      position: relative;
+      top: 750px;
+      right: 70px;
+  }
+  #man {
+      top: 300px;
+      width: 200px;
+      height: 120px;
+  }
+  .title{
+      position: relative;
+      top: -120px;
+      font-size: 4rem;
+  }
+}
+
+@media screen and (max-width:545px)
+{
+    .search{
+        max-width: 450px;
+        position: relative;
+        left: 30px;
+    }
+
+    #man {
+        top: 300px;
+        width: 200px;
+        height: 120px;
+    }
+    .title{
+        position: relative;
+        top: -120px;
+        font-size: 3rem;
+    }
+    .quoteEl {
+      position: relative;
+      top: -180px;
+    }
 }

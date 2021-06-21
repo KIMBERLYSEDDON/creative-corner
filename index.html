@@ -22,30 +22,36 @@
         </div>
     </nav>
    
-    <header class="header uk-flex-nowrap uk-position-bottom-right uk-transform-origin-bottom-right uk-animation-scale-down uk-transform-origin-top-left uk-margin-large-right">
+
+    <header class="header uk-position-bottom-right uk-transform-origin-bottom-right uk-animation-scale-down uk-transform-origin-top-left uk-margin-large-right">
         <h2 class="title">Creative Corner</h2>
     </header>
     <main>
-        <section class="uk-flex-inline cloud uk-width-xlarge uk-inline uk-position-top uk-animation-scale-up uk-margin-large-left">
+        <section  class="uk-container uk-grid uk-margin" >
+        <section class="cloud uk-overlay uk-width-xlarge uk-inline uk-position-top uk-animation-scale-up uk-margin-large-left">
+
             <img src="./images/cloudscreenshot.jpg" alt="cloud">
-            <div id="quote" class="uk-overlay">
+            <div id="quote" class="">
 
             </div>
         </section>
     
         
-        <section class="uk-position-bottom-left" id="man">
-            <img src="./images/clipart1126199.png" alt="man thinking">
+        <div class="uk-position-center-left uk-display-block" id="man">
+            <img class="uk-marign-top" src="./images/clipart1126199.png" alt="man thinking">
+            </div>
         </section>    
      
         
-        <section class="search uk-flex-nowrap" id="search">
+   feature/kimsbranch
+        <section class="search uk-position-center-right uk-margin" id="search">
+
             <form class="uk-search uk-search-large">
                 <input id="search-input" class="uk-search-input" type="search">
                 <button class="uk-search-icon-flip" uk-search-icon></button>
             </form>
-            <button class="uk-button-text uk-position--top-center" id="next" uk-icon="icon: arrow-right; ratio: 2"></button>
-            <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="art-image-container">
+            <button class="uk-button-text" id="next" uk-icon="icon: arrow-right; ratio: 2"></button>
+            <div class="uk-child-width-1-3" uk-grid uk-lightbox="animation: slide" id="art-image-container">
 
                 <div id="image-result1"></div>
                 <div id="image-result2"></div>
