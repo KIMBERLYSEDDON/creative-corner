@@ -183,9 +183,9 @@ var getQuote = function (quote) {
 
 var displayQuote = function (quote, author) {
   var quoteEl = document.createElement('p')
-  quoteEl.setAttribute("class", "quoteEl uk-text-center uk-margin-auto-vertical uk-flex-middle uk-flex-center uk-child-width-expand")
+  quoteEl.setAttribute("class", "quoteEl uk-margin-remove-top uk-padding uk-text-center uk-flex-top uk-flex-center uk-child-width-expand")
   quoteEl.textContent = '"' + quote + '"' + '   -' + author
-  document.querySelector("#quote").append(quoteEl)
+  document.querySelector(".cloud").append(quoteEl)
 
 }
 getQuote()
