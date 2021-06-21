@@ -25,4 +25,3 @@ clrFavs.on("click", function (event) {
 loadStoredFavs();
 // console.log(storedFavs);
 // console.log(storedFavs[0].href);
-console.log("contact");

@@ -133,7 +133,7 @@ artImage.on("click", ".favBtn", function (event) {
 
   var favBtn = $(event.target);
   this.innerHTML = "✓"
-  // console.log(favBtn.siblings()[0]);
+  console.log(favBtn.siblings()[0]);
 
   // console.log(favBtn.siblings()[0]);
   // console.log(favBtn.siblings()[0].href);
